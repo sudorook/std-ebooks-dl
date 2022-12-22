@@ -8,7 +8,7 @@ function download_epubs {
   while read -r line; do
     echo "${line}"
     wget --quiet -nc "${PREFIX}/${line}/downloads/${line//\//_}.epub"
-    wget --quiet -nc "${PREFIX}/${line}/downloads/${line//\//_}_advanced.epub"
+    # wget --quiet -nc "${PREFIX}/${line}/downloads/${line//\//_}_advanced.epub"
     sleep $((RANDOM % 10 + 10))
   done
 }
