@@ -13,7 +13,17 @@ function download_epubs {
   done
 }
 
-for PAGE in $(seq 1 59); do
+function get_page_count {
+  curl "https://standardebooks.org/ebooks" | \
+    sed -n "s,\s\+<li><a href=\"/ebooks/?page=[0-9]\+\">\([0-9]\+\)</a></li>,\1,p" | \
+    tail -n 1
+}
+
+PAGES="$(get_page_count)"
+PAGES="${PAGES:-63}"
+
+echo "Downloading ${PAGES} pages."
+for PAGE in $(seq 1 "${PAGES}"); do
   echo "${PREFIX}?page=${PAGE}"
   curl "${PREFIX}?page=${PAGE}" | \
     grep "about=\"/ebooks" | \
