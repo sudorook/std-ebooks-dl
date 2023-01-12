@@ -20,7 +20,10 @@ function get_page_count {
 }
 
 PAGES="$(get_page_count)"
-PAGES="${PAGES:-63}"
+if [ -z "${PAGES}" ]; then
+  echo "Parsing page count failed. Exiting."
+  exit 3
+fi
 
 echo "Downloading ${PAGES} pages."
 for PAGE in $(seq 1 "${PAGES}"); do
