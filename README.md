@@ -6,10 +6,9 @@ available eBooks.
 Requires:
 
 - `bash`
+- `curl`
 - `grep`
 - `sed`
-- `wget`
-- `curl`
 
 Run:
 
