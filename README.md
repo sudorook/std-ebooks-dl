@@ -1,11 +1,12 @@
 # Standard eBooks Downloader
 
-Crawl the [Standard eBooks website](standardebooks.org) and download all
+Crawl the [Standard eBooks website](https://standardebooks.org) and download all
 available eBooks.
 
 Requires:
 
 - `bash`
+- `coreutils`
 - `curl`
 - `grep`
 - `sed`
