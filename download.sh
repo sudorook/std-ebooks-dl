@@ -5,11 +5,18 @@ PREFIX="https://standardebooks.org/ebooks"
 
 function download_epubs {
   local line
+  local file
   while read -r line; do
-    echo "${line}"
-    curl -s --no-clobber -O "${PREFIX}/${line}/downloads/${line//\//_}.epub"
-    # curl -s --no-clobber -O "${PREFIX}/${line}/downloads/${line//\//_}_advanced.epub"
-    sleep $((RANDOM % 10 + 10))
+    file="${line//\//_}.epub"
+    # file="${line//\//_}_advanced.epub"
+    if ! [ -f "${file}" ]; then
+      echo -n "${file@Q}... "
+      curl -s -O "${PREFIX}/${line}/downloads/${file}"
+      echo "done."
+      sleep $((RANDOM % 10 + 10))
+    else
+      echo "${file@Q} already exists. Skipping."
+    fi
   done
 }
 
