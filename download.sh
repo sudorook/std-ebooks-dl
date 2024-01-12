@@ -54,7 +54,6 @@ echo "Downloading ${PAGES} pages."
 for PAGE in $(seq 1 "${PAGES}"); do
   echo "${PREFIX}?page=${PAGE}"
   curl -s "${PREFIX}?page=${PAGE}" |
-    grep "about=\"/ebooks" |
     sed -n "s/.*about=\"\/ebooks\/\(.*\)\">/\1/p" |
     download_epubs
   echo

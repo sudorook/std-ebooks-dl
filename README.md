@@ -8,7 +8,6 @@ Requires:
 - `bash`
 - `coreutils`
 - `curl`
-- `grep`
 - `sed`
 
 Run:
