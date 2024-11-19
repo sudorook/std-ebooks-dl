@@ -40,7 +40,7 @@ function download_epubs {
 
 function get_page_count {
   curl -s "https://standardebooks.org/ebooks" |
-    sed -n "s,\s\+<li><a href=\"/ebooks?page=[0-9]\+\">\([0-9]\+\)</a></li>,\1,p" |
+    sed -n "s,\s\+<a href=\"/ebooks?page=[0-9]\+\">\([0-9]\+\)</a>,\1,p" |
     tail -n 1
 }
 
