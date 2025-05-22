@@ -29,7 +29,7 @@ function download_epubs {
     # file="${line//\//_}_advanced.epub"
     if ! [ -f "${file}" ]; then
       echo -n "${file@Q}... "
-      curl -s -O "${PREFIX}/${line}/downloads/${file}"
+      curl -s -O "${PREFIX}/${line}/downloads/${file}?source=download" -o ${file}
       echo "done."
       sleep $((RANDOM % 10 + 10))
     else
